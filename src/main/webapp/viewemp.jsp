@@ -9,13 +9,21 @@
 <title>Employee List</title>
 </head>
 <body>
-<table> 
-<thead> </thead>
+<table border = "2">
+<tr>
+<th> Employee_id</th>
+<th> First_name</th>
+<th> Last_name</th>
+<th> Email</th>
+<th> Hire_date</th>
+<th> Job_id</th>
+<th>Salary</th>
+</tr>
 <% 
-List<Employee> allEmployees = (ArrayList<Employee>)request.getAttribute("emplist");
-for(Employee emp:allEmployees){
+List<Employee> allEmployee = (ArrayList<Employee>)request.getAttribute("emplist");
+for(Employee emp: allEmployee){
  %>
-  <tr>
+ <tr>
   <td> <%=emp.getEmployee_id()%>  </td>
   <td> <%=emp.getFirst_name()%>  </td>
   <td> <%=emp.getLast_name()%>  </td>

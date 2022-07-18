@@ -7,7 +7,7 @@
 <title>View Employees</title>
 </head>
 <body>
-	<form action="Employees" method="get">
+	<form action="ListAllEmployeeServlet" method="get">
 		<center>
 			<h1>View All Employees</h1>
 			<div>

@@ -7,7 +7,7 @@
 <title>Add new Emp</title>
 </head>
 <body>
-	<form action="Employees" method="post"> <!-- -need to mention method=put -->
+	<form action="AddEmployee" method="post"> <!-- -need to mention method=put -->
         <center>
         <div>
             ID: <input type='text' name='id' ></div>

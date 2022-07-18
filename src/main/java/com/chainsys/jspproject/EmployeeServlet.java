@@ -208,7 +208,7 @@ public class EmployeeServlet extends HttpServlet {
 				}
 				newemp.setSalary(salParse);
 //----------------------------------------------			
-				result = EmployeeDao.insertEmployee(newemp);
+//				result = EmployeeDao.insertEmployee(newemp);
 			} catch (Exception e) {
 				message += "Error in Employee id input </p>";
 				String errorPage =ExceptionManager.handleException(e, source, message);
@@ -216,8 +216,12 @@ public class EmployeeServlet extends HttpServlet {
 			//	err.printStackTrace();
 				return;
 			}
-			out.println("<div> Add New Employee: " + result + "</div>");
-			System.out.println("1 Added Successfully");
+//			out.println("<div> Add New Employee: " + result + "</div>");
+//			System.out.println("1 Added Successfully");
+			result = EmployeeDao.insertEmployee(newemp);
+            request.setAttribute("addemp", result);
+            RequestDispatcher rd = request.getRequestDispatcher("/addemployee.jsp");
+            rd.forward(request, response);
 			// + new Employee()); -> from the servlet send only
 			// object are illegal.
 		} else {
@@ -365,13 +369,18 @@ public class EmployeeServlet extends HttpServlet {
 			}
 			newemp.setSalary(salParse);
 //----------------------------------------------	
-			result = EmployeeDao.updateEmployee(newemp);
-			System.out.println(result + " Updated Successfully");
+//			result = EmployeeDao.updateEmployee(newemp);
+//			System.out.println(result + " Updated Successfully");
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		out.println("<div> Update Employee: " + result + "</div>");
+		// out.println("<div> Update Employee: " + result + "</div>");
+		result = EmployeeDao.updateEmployee(newemp);
+        request.setAttribute("updateemp", result);
+        RequestDispatcher rd = request.getRequestDispatcher("/updateemployee.jsp");
+        rd.forward(request, response);
 	}
 
 	/**
@@ -405,12 +414,17 @@ public class EmployeeServlet extends HttpServlet {
 			//	err.printStackTrace();
 				return;
 			}
+//			result = EmployeeDao.deleteEmployee(empId);
+//			System.out.println(result + " Deleted Successfully");
 			result = EmployeeDao.deleteEmployee(empId);
-			System.out.println(result + " Deleted Successfully");
+	        request.setAttribute("delemp", result);
+	        RequestDispatcher rd = request.getRequestDispatcher("/deleteemp.jsp");
+	        rd.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		out.print("<div> Deleted Employee: " + result + "</div>");
+		//out.print("<div> Deleted Employee: " + result + "</div>");
+		
 	}
 
 }
