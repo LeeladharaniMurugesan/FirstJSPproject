@@ -7,7 +7,17 @@
 <title>Index</title>
 </head>
 <body>
+<center>
 <h1>Welcome to JSP</h1>
+<br>
 <a href="addemp.jsp">Add New Employee</a>
+</br>
+<br>
+<a href ="delemp.jsp">Delete Employee</a>
+</br>
+<br>
+<a href ="view.jsp"> View All Employee</a>
+</br>
+</center>
 </body>
 </html>

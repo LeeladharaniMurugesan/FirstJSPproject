@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,13 +27,13 @@ import com.chainsys.jspproject.pojo.Employee;
  * Servlet implementation class Employees
  */
 @WebServlet("/Employees")
-public class Employees extends HttpServlet {
+public class EmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Employees() {
+	public EmployeeServlet() {
 		super();
 	}
 
@@ -42,22 +43,14 @@ public class Employees extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
-		List<Employee> allEmployees = EmployeeDao.getAllEmployee();
-		Iterator<com.chainsys.jspproject.pojo.Employee> empIterator = allEmployees.iterator();
-		while (empIterator.hasNext()) {
-			Employee result = empIterator.next();
-//			out.println("Employee id: " + "\t" + "Employee first name: " + "\t" + "Employee last name: " + "\t"
-//					+ "Employee email: " + "\t" + "Employee hiredate: " + "\t" + "Employee job id: " + "\t"
-//					+ "Employee salary: " + "\t");
-			out.println("<hr/>");
 
-			out.println(result.getEmployee_id() + "," + result.getFirst_name() + "," + result.getLast_name() + ","
-					+ result.getEmail() + "," + result.getHire_date() + "," + result.getJob_id() + ","
-					+ result.getSalary() + ",");
-		}
+		  List<Employee> allEmployees = EmployeeDao.getAllEmployee();
+			request.setAttribute("emplist", allEmployees);
+			RequestDispatcher rd = request.getRequestDispatcher("/viewemp.jsp");
+			rd.forward(request, response);
+			
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -73,6 +66,8 @@ public class Employees extends HttpServlet {
 			doPut(request, response);
 		} else if (submitValue.equals("DELETE")) {
 			doDelete(request, response);
+		}else if (submitValue.equals("VIEW")) {
+					doGet(request, response);
 		} else if (submitValue.equals("ADD")) {
 			String source ="AddNewEmployee";
 			String message ="<h1>Error while"+source+ "</h1>";
