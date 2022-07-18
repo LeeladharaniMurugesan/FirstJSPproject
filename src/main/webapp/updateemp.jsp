@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add new Emp</title>
+<title>Update new Emp</title>
 </head>
 <body>
 	<form action="Employees" method="put"> <!-- -need to mention method=put -->

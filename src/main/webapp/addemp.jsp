@@ -30,7 +30,6 @@
             </div>
             <div>
             <input type='submit' value='ADD'  name='submit'>  
-            <input type ='submit' value ='UPDATE'name ='submit'>
             </div>         
         </center>
         </form>
