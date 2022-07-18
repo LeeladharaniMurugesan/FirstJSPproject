@@ -13,6 +13,9 @@
 <a href="addemp.jsp">Add New Employee</a>
 </br>
 <br>
+<a href="updateemp.jsp">Add New Employee</a>
+</br>
+<br>
 <a href ="delemp.jsp">Delete Employee</a>
 </br>
 <br>
